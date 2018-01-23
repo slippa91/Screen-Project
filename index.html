@@ -26,9 +26,55 @@
         </div>
     </div>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
-    <script type="text/javascript" src="dom.js"></script>
+    <script type="text/javascript" src="https://slippa91.github.io/dom/dom.js"></script>
     <script type="text/javascript">
+
+//Clock 
+
+
+    var timeSpan = document.querySelector("#time");
+
+    var setTime = function(){
     var time = moment().format('LT');
+    var d = new Date();
+    //var s = d.getSeconds();
+    //var m = d.getminutes();
+    //var h = d.getHours();
+    //timeSpan.innerHTML = time;
+    $("#time").html(time);
+  
+}
+    setInterval(setTime, 1000);
+
+//Toggle
+
+var toggleList = function() {
+    $("#todo-container").toggle("hide");
+}
+$("#todo-title").on("click", toggleList);
+
+//ToDo List
+
+var toDoArray = [];
+var toDoElem = document.querySelector("#todo");
+
+var addToDo = function() {
+    var newToDo = prompt("Add a new ToDo");
+   
+    toDoArray.push(newToDo);
+        console.log(toDoArray);
+    
+    var toDoList = "<li>" + newToDo + "</li>";
+    toDoElem.innerHTML += toDoList;
+    // OR $("todo").html(toDoList);
+    
+    //return toDoArray;
+
+}
+
+$("#plus").on("click", addToDo);
+
+
 
     </script>
 </body>
